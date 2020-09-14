@@ -2,6 +2,12 @@ public class Vowel {
     private static final String WORD = "mommy";
     private static final double RATIO = 0.3;
 
+    /**
+     * insert mommy into the word with 30% of vowels
+     * for each continuous set of vowels.
+     * @param s string
+     * @return string
+     */
     public String insertMommy(String s) {
         if (s == null) {
             throw new NullPointerException();
@@ -56,7 +62,7 @@ public class Vowel {
             char c = s.charAt(i);
             if (Character.isLetter(c) && isVowel(Character.toLowerCase(c))) {
                 if (i != 0 && c == Character.toLowerCase(s.charAt(i - 1))) {
-                    prev = i - 1;
+                    prev = i;
                     break;
                 }
             }

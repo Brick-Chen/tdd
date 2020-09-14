@@ -33,4 +33,12 @@ public class MommifierTest {
         String ans = vowel.insertMommy(noContinuousVowel);
         Assertions.assertEquals(noContinuousVowel, ans);
     }
+
+    @Test
+    public void should_return_new_string_insert_with_mommy() {
+        Vowel vowel = new Vowel();
+        String validString = "aaa";
+        String ans = vowel.insertMommy(validString);
+        Assertions.assertEquals("amommyamommya", ans);
+    }
 }
