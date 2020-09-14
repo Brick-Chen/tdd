@@ -9,10 +9,13 @@ public class Vowel {
         if (s.length() == 0) {
             return "";
         }
-        if (!vowelRatioValid(s)) {
+        int pos;
+        if (!vowelRatioValid(s) || (pos = indexOfContinueVowel(s)) == -1) {
             return s;
         }
-        return "";
+        StringBuilder builder = new StringBuilder(s);
+        builder.insert(pos, WORD);
+        return insertMommy(builder.toString());
     }
 
     /**
@@ -25,7 +28,7 @@ public class Vowel {
         double cnt = 0;
         for(int i = 0; i < s.length(); ++i) {
             char c = s.charAt(i);
-            if (Character.isLetter(c) && isVowel(Character.toLowerCase(c))) {
+            if (isVowel(Character.toLowerCase(c))) {
                 cnt += 1;
             }
         }
@@ -39,5 +42,25 @@ public class Vowel {
      */
     private boolean isVowel(char c) {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c =='u';
+    }
+
+    /**
+     * return first index of continuous vowels appear
+     * @param s string
+     * @return first index of continuous vowels appear
+     * if no continuous vowel, return -1
+     */
+    private int indexOfContinueVowel(String s) {
+        int prev = -1;
+        for(int i = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            if (Character.isLetter(c) && isVowel(Character.toLowerCase(c))) {
+                if (i != 0 && c == Character.toLowerCase(s.charAt(i - 1))) {
+                    prev = i - 1;
+                    break;
+                }
+            }
+        }
+        return prev;
     }
 }

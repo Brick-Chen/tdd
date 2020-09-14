@@ -25,4 +25,12 @@ public class MommifierTest {
         String ans = vowel.insertMommy(vowelBelow30Percent);
         Assertions.assertEquals(vowelBelow30Percent, ans);
     }
+
+    @Test
+    public void should_return_original_string_when_continuous_vowel_not_exist() {
+        Vowel vowel= new Vowel();
+        String noContinuousVowel = "rat";
+        String ans = vowel.insertMommy(noContinuousVowel);
+        Assertions.assertEquals(noContinuousVowel, ans);
+    }
 }
