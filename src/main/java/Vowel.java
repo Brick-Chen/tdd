@@ -5,6 +5,9 @@ public class Vowel {
         if (s == null) {
             throw new NullPointerException();
         }
-        return "";
+        if (s.length() == 0) {
+            return "";
+        }
+        return s;
     }
 }

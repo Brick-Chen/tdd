@@ -9,4 +9,12 @@ public class MommifierTest {
             vowel.insertMommy(null);
         });
     }
+
+    @Test
+    public void should_return_empty_string_when_string_is_empty() {
+        Vowel vowel = new Vowel();
+        String emptyString = "";
+        String ans = vowel.insertMommy(emptyString);
+        Assertions.assertEquals("", ans);
+    }
 }
